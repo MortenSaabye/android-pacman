@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Pacman</string>
+    <string name="points">Points:</string>
+    <string name="time">Remaining time:</string>
+    <string name="move_right">Move Right</string>
+    <string name="action_settings">Settings</string>
+    <string name="easy">Easy</string>
+    <string name="hard">Hard</string>
+</resources>
