@@ -58,7 +58,6 @@ public class GameView extends View {
 		if(game.getEnemies().size() == 0) {
 			game.addEnemies();
 		}
-		Log.d("GAMEVIEW","h = "+h+", w = "+w);
 		//Making a new paint object
 		Paint paint = new Paint();
 		canvas.drawColor(Color.WHITE); //clear entire canvas to white color

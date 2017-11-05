@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
     private void setupGame(TextView points) {
         numEnemies = difficulty / 7;
         numCoins = difficulty / 4;
-        game = new Game(this,points, numCoins, numEnemies);
+        game = new Game(this ,points, numCoins, numEnemies);
         game.setGameView(gameView);
         gameView.setGame(game);
         game.newGame();
@@ -170,15 +170,19 @@ public class MainActivity extends Activity {
 
     private void setupSwipeListener(){
         gameView.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
             public void onSwipeRight () {
                 game.setDirection(1);
             }
+            @Override
             public void onSwipeLeft () {
                 game.setDirection(2);
             }
+            @Override
             public void onSwipeBottom () {
                 game.setDirection(3);
             }
+            @Override
             public void onSwipeTop () {
                 game.setDirection(4);
             }
@@ -191,7 +195,6 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

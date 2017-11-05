@@ -57,8 +57,8 @@ public class Game {
     private TextView pointsView;
     private int pacx, pacy;
 
-    int pacCenterX;
-    int pacCenterY;
+    private int pacCenterX;
+    private int pacCenterY;
 
     //the list of goldcoins - initially empty
     private ArrayList<GoldCoin> coins = new ArrayList<>();
@@ -194,7 +194,8 @@ public class Game {
             int boundH = this.h - (2 * laneHeight * i);
             int boundW = this.w - (2 * laneWidth * i);
             Bounds outerBounds = new Bounds(boundX, boundY, boundW, boundH);
-            Bounds innerBounds = new Bounds(boundX + laneWidth, boundY + laneHeight, boundW - 2*laneWidth, boundH - 2*laneHeight);
+            Bounds innerBounds = new Bounds(boundX + laneWidth, boundY + laneHeight,
+                    boundW - 2*laneWidth, boundH - 2*laneHeight);
             int y = outerBounds.getY() + outerBounds.getHeight() - 130;
             int x = outerBounds.getX();
             Enemy enemy = new Enemy(x,y, enemySize, enemyDistance, outerBounds, innerBounds);
@@ -211,6 +212,7 @@ public class Game {
 
 
     private Runnable Timer_Tick = new Runnable() {
+        @Override
         public void run() {
             moveEnemies();
             switch (direction) {
@@ -240,20 +242,6 @@ public class Game {
            enemy.move(pacCenterX, pacCenterY);
         }
     }
-    private void moveEnemyRight(Enemy enemy) {
-        enemy.setX(enemy.getX() + enemyDistance);
-        enemy.setDirection(2);
-    }
-    private void moveEnemyLeft(Enemy enemy) {
-        enemy.setX(enemy.getX() - enemyDistance);
-        enemy.setDirection(1);
-    }
-    private void moveEnemyDown(Enemy enemy) {
-        enemy.setY(enemy.getY() + enemyDistance);
-    }
-    private void moveEnemyUp(Enemy enemy) {
-        enemy.setY(enemy.getY() - enemyDistance);
-    }
 
     public int getPacx()
     {
@@ -265,20 +253,12 @@ public class Game {
         return pacy;
     }
 
-    public int getPoints()
-    {
-        return points;
-    }
-
     public Bitmap getCurrentPacBitmap() {
         return currentPacBitmap;
     }
 
     public void setDirection(int direction) {
         this.direction = direction;
-    }
-    public Bitmap getRightPacBitmap() {
-        return rightPacBitmap;
     }
 
     public Bitmap getLeftEnemyBitmap() {
@@ -308,7 +288,7 @@ public class Game {
 
     private void checkWin() {
         if(points >= coins.size()) {
-            this.activity.gameWon();
+            activity.gameWon();
         }
     }
 
